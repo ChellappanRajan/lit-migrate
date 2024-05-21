@@ -6,10 +6,10 @@ export class SimpleGreeting extends LitElement {
   static styles = css`p { color: blue }`;
 
   @property()
-  name:string | undefined | undefined | undefined;
+  name?:string;
 
-  @property()
-  props:string | 'a' | 'b';
+    @property()
+  props?:string | 'a' | 'b';
 
   _name?:string;
   
