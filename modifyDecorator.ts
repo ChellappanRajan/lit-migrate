@@ -4,7 +4,10 @@ import { Project, SyntaxKind } from "ts-morph";
 const project = new Project();
 
 // Add source files to the project
-project.addSourceFilesAtPaths("./test.ts");
+// project.addSourceFilesAtPaths("src/**/*.ts");
+
+// Add source files to the project
+project.addSourceFilesAtPaths("./*.ts");
 
 // Function to modify the @property decorator
 function modifyPropertyDecorator() {
@@ -16,24 +19,81 @@ function modifyPropertyDecorator() {
         propertyDeclarations.forEach(propertyDeclaration => {
             const decorators = propertyDeclaration.getDecorators();
 
-
-            
-        
             decorators.forEach(decorator => {
                 const callExpression = decorator.getExpression();
                 // propertyDeclaration.setType(`${callExpression.getText()}`);
 
                 if(decorator.getFullName() === 'property'){
-
                     if(propertyDeclaration.hasQuestionToken()){
                         propertyDeclaration.setHasQuestionToken(false);
                         const typeNode = propertyDeclaration.getTypeNode(); 
                         const typeText = typeNode ? typeNode.getText() : "any";
+                        propertyDeclaration.toggleModifier("accessor",true);
                         propertyDeclaration.setType(`${typeText} | undefined`);
+                    }else{
+                        propertyDeclaration.toggleModifier("accessor",true);
                     }
-                    
-                    
                 }
+                if(decorator.getFullName() === 'query'){
+                    if(propertyDeclaration.hasQuestionToken()){
+                        propertyDeclaration.setHasQuestionToken(false);
+                        const typeNode = propertyDeclaration.getTypeNode(); 
+                        const typeText = typeNode ? typeNode.getText() : "any";
+                        propertyDeclaration.toggleModifier("accessor",true);
+                        propertyDeclaration.setType(`${typeText} | undefined`);
+                    }else{
+                        propertyDeclaration.toggleModifier("accessor",true);
+                    }
+                }
+
+                if(decorator.getFullName() === 'queryAll'){
+                    if(propertyDeclaration.hasQuestionToken()){
+                        propertyDeclaration.setHasQuestionToken(false);
+                        const typeNode = propertyDeclaration.getTypeNode(); 
+                        const typeText = typeNode ? typeNode.getText() : "any";
+                        propertyDeclaration.toggleModifier("accessor",true);
+                        propertyDeclaration.setType(`${typeText} | undefined`);
+                    }else{
+                        propertyDeclaration.toggleModifier("accessor",true);
+                    }
+                }
+                if(decorator.getFullName() === 'queryAssignedElements'){
+                    if(propertyDeclaration.hasQuestionToken()){
+                        propertyDeclaration.setHasQuestionToken(false);
+                        const typeNode = propertyDeclaration.getTypeNode(); 
+                        const typeText = typeNode ? typeNode.getText() : "any";
+                        propertyDeclaration.toggleModifier("accessor",true);
+                        propertyDeclaration.setType(`${typeText} | undefined`);
+                    }else{
+                        propertyDeclaration.toggleModifier("accessor",true);
+                    }
+                }
+                if(decorator.getFullName() === 'queryAssignedNodes'){
+                    if(propertyDeclaration.hasQuestionToken()){
+                        propertyDeclaration.setHasQuestionToken(false);
+                        const typeNode = propertyDeclaration.getTypeNode(); 
+                        const typeText = typeNode ? typeNode.getText() : "any";
+                        propertyDeclaration.toggleModifier("accessor",true);
+                        propertyDeclaration.setType(`${typeText} | undefined`);
+                    }else{
+                        propertyDeclaration.toggleModifier("accessor",true);
+                    }
+                }
+                if(decorator.getFullName() === 'state'){
+                    if(propertyDeclaration.hasQuestionToken()){
+                        propertyDeclaration.setHasQuestionToken(false);
+                        const typeNode = propertyDeclaration.getTypeNode(); 
+                        const typeText = typeNode ? typeNode.getText() : "any";
+                        propertyDeclaration.toggleModifier("accessor",true);
+                        propertyDeclaration.setType(`${typeText} | undefined`);
+                    }else{
+                        propertyDeclaration.toggleModifier("accessor",true);
+                    }
+                }
+
+                
+                
+                
             
             });
         });
@@ -45,3 +105,4 @@ function modifyPropertyDecorator() {
 
 // Run the function
 modifyPropertyDecorator();
+
