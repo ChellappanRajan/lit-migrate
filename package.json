@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "start": "node -r ts-node/register modifyDecorator.ts"
+  },
+  "devDependencies": {
+    "ts-morph": "^22.0.0",
+    "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "typescript": "^5.4.5"
+  }
+}
