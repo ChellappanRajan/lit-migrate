@@ -1,5 +1,5 @@
 import {html, css, LitElement} from 'lit';
-import {customElement, property} from 'lit/decorators.js';
+import {customElement, property,query} from 'lit/decorators.js';
 
 @customElement('simple-greeting')
 export class SimpleGreeting extends LitElement {
@@ -8,10 +8,7 @@ export class SimpleGreeting extends LitElement {
   @property()
   name?:string;
 
-    @property()
-  props?:string | 'a' | 'b';
-
-  _name?:string;
+  @query('slot') _name?:string;
   
   render() {
     return html`<p>Hello, ${this.name}!</p>`;
