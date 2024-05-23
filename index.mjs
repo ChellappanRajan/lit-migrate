@@ -3,19 +3,13 @@
 import { Project, SyntaxKind } from "ts-morph";
 import chalk from "chalk";
 
-
 const defaultPath = "**/!(*.d).ts";
-
-
-
 const path =
   process.argv.slice(2).at(0)?.split("=")?.slice(1)?.join() ?? defaultPath;
 
 // Initialize the project
 const project = new Project();
 
-// Add source files to the project
-// project.addSourceFilesAtPaths("src/**/*.ts");
 
 const LIT_DECORATORS = [
   "property",
