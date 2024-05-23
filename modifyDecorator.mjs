@@ -1,5 +1,6 @@
 import { Project, SyntaxKind } from "ts-morph";
 
+
 // Initialize the project
 const project = new Project();
 
@@ -9,12 +10,15 @@ const project = new Project();
 const LIT_DECORATORS = ['property','query','queryAll','queryAssignedElements','queryAssignedNodes','state'];
 
 // Add source files to the project
-project.addSourceFilesAtPaths("./test.ts");
 
 // Function to modify the @property decorator
-function modifyPropertyDecorator() {
+export function modifyPropertyDecorator(path) {
+
+    project.addSourceFilesAtPaths(path);
+    const allSourceFiles = project.getSourceFiles();
+    console.log(`Total:${allSourceFiles.length} File Found..`);
     // Iterate through all source files in the project
-    project.getSourceFiles().forEach(sourceFile => {
+    allSourceFiles.forEach(sourceFile => {
         // Find all property declarations
         const propertyDeclarations = sourceFile.getDescendantsOfKind(SyntaxKind.PropertyDeclaration);
 
@@ -42,6 +46,6 @@ function modifyPropertyDecorator() {
 }
 
 // Run the function
-modifyPropertyDecorator();
+// modifyPropertyDecorator();
 
 
