@@ -2,20 +2,11 @@
 
 import { Project, SyntaxKind } from "ts-morph";
 import chalk from "chalk";
-import yargs from "yargs";
+
 
 const defaultPath = "**/!(*.d).ts";
 
-// Set up yargs to parse command-line arguments
-const argv = yargs()
-  .option("path", {
-    alias: "p",
-    description: " Specify paths for migration",
-    type: "string",
-    default: defaultPath,
-  })
-  .help()
-  .alias("help", "h").argv;
+
 
 const path =
   process.argv.slice(2).at(0)?.split("=")?.slice(1)?.join() ?? defaultPath;
@@ -41,7 +32,7 @@ project.addSourceFilesAtPaths(path);
 // Function to modify the @property decorator
 function modifyPropertyDecorator() {
   const allSourceFiles = project.getSourceFiles();
-  console.log(chalk.yellow(`📁 Total: ${allSourceFiles.length} Files Found`)); // Yellow text with folder emoji
+  console.log(chalk.yellow(`📁 Total: ${allSourceFiles.length} Files Found`)); 
 
   // Iterate through all source files in the project
   allSourceFiles.forEach((sourceFile) => {
@@ -74,6 +65,6 @@ function modifyPropertyDecorator() {
   console.log(chalk.green("🎉 Migration Completed..."));
 }
 
-console.log(chalk.green("🚀 Migration Started...")); // Green text with rocket emoji
+console.log(chalk.green("🚀 Migration Started..."));
 // Run the function
 modifyPropertyDecorator();
