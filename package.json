@@ -1,4 +1,5 @@
 {
+  "name": "lit-migrate",
   "scripts": {
     "start": "node -r ts-node/register modifyDecorator.ts"
   },
@@ -6,9 +7,11 @@
     "ts-morph": "^22.0.0",
     "ts-node": "^10.9.2"
   },
+  "bin": {
+    "lit-migrate": "./index.mjs"
+  },
   "dependencies": {
     "chalk": "^5.3.0",
-    "commander": "^12.1.0",
-    "yargs": "^17.7.2"
+    "commander": "^12.1.0"
   }
 }
