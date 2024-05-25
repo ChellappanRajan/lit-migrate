@@ -1,5 +1,8 @@
 {
   "name": "lit-migrate",
+  "version": "1.0.0",
+  "description": "A CLI tool for migrating TypeScript experimental decorators to standard decorators.",
+  "keywords": ["cli", "tool", "webcomponents","lit","migration-tool","migration"], 
   "scripts": {
     "start": "node -r ts-node/register modifyDecorator.ts"
   },
