@@ -8,4 +8,9 @@
 To run the migration tool, use the following command:
 
 ```sh
-npx @lit-migrate --path="./src/test.ts"
+npx lit-migrate --path <paths...>
+```
+
+### Default Path
+
+If the `--path` option is not provided, the tool will default to searching for TypeScript files using the pattern `**/!(*.d).ts`. This means it will find and transform all TypeScript files except for declaration files (*.d.ts)
